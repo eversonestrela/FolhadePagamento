@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>FolhadePagamento.Infra</RootNamespace>
+    <LangVersion>12.0</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Entity Framework Core para SQL Server -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Referência ao projeto de Domínio -->
+    <ProjectReference Include="..\FolhadePagamento.Dominio\FolhadePagamento.Dominio.csproj" />
+    <!-- Referência ao projeto de Aplicação (para interfaces de repositório) -->
+    <ProjectReference Include="..\FolhadePagamento.Aplicacao\FolhadePagamento.Aplicacao.csproj" />
+  </ItemGroup>
+
+</Project>
