@@ -69,6 +69,18 @@ public sealed class Dinheiro : IEquatable<Dinheiro>, IComparable<Dinheiro>
         return new Dinheiro(Valor * fator);
     }
 
+    /// <summary>
+    /// Multiplica por um percentual (0-100), retornando nova instância.
+    /// Ex: MultiplicarPorPercentual(35) aplica 35% ao valor.
+    /// </summary>
+    public Dinheiro MultiplicarPorPercentual(decimal percentual)
+    {
+        if (percentual < 0)
+            throw new ArgumentException("Percentual não pode ser negativo", nameof(percentual));
+
+        return new Dinheiro(Valor * percentual / 100m);
+    }
+
     // Igualdade
     public bool Equals(Dinheiro? outro)
     {
