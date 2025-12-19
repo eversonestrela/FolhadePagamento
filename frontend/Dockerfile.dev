@@ -1,0 +1,20 @@
+# Dockerfile para desenvolvimento com hot reload
+# NÃO usar em produção
+
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Instalar dependências apenas se package.json mudar
+COPY package*.json ./
+RUN npm install
+
+# Código fonte será montado via volume
+# Não copiamos aqui para permitir hot reload
+
+# Expor porta do Vite dev server
+EXPOSE 5173
+
+# Rodar servidor de desenvolvimento
+# usePolling habilitado para funcionar com Docker volumes
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]

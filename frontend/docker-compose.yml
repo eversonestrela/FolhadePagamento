@@ -1,0 +1,49 @@
+# Docker Compose para ambiente de desenvolvimento
+# Hot reload habilitado via volume mount
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5173:5173"
+    volumes:
+      # Monta código fonte para hot reload
+      - .:/app
+      # Evita sobrescrever node_modules do container
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=https://localhost:7100
+      # Habilita polling para hot reload funcionar com Docker
+      - CHOKIDAR_USEPOLLING=true
+    stdin_open: true
+    tty: true
+
+  # Opcional: API backend para desenvolvimento completo
+  # Descomente se quiser rodar API junto
+  # api:
+  #   build:
+  #     context: ../src/FolhaDePagamento.API
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "7001:443"
+  #     - "7000:80"
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Development
+  #     - ConnectionStrings__DefaultConnection=Server=db;Database=FolhaDePagamento;User=sa;Password=SuaSenhaForte123!;TrustServerCertificate=True
+  #   depends_on:
+  #     - db
+
+  # db:
+  #   image: mcr.microsoft.com/mssql/server:2022-latest
+  #   ports:
+  #     - "1433:1433"
+  #   environment:
+  #     - ACCEPT_EULA=Y
+  #     - SA_PASSWORD=SuaSenhaForte123!
+  #   volumes:
+  #     - sqldata:/var/opt/mssql
+
+# volumes:
+#   sqldata:

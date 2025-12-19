@@ -1,0 +1,235 @@
+/* Página de Processamentos */
+.processamentos-page {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.page-header h1 {
+  margin: 0;
+  color: #1a365d;
+}
+
+.filtros {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filtros select {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  background: white;
+  font-size: 0.9rem;
+}
+
+/* Tabela */
+.tabela-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela th,
+.tabela td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.tabela th {
+  font-weight: 600;
+  color: #4a5568;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  background: #f7fafc;
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-finalizado {
+  background: #c6f6d5;
+  color: #276749;
+}
+
+.status-processando {
+  background: #bee3f8;
+  color: #2c5282;
+}
+
+.status-erro {
+  background: #fed7d7;
+  color: #c53030;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 400px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-grande {
+  max-width: 500px;
+}
+
+.modal h2 {
+  margin: 0 0 1rem 0;
+  color: #1a365d;
+}
+
+.modal h3 {
+  margin: 1rem 0 0.5rem 0;
+  font-size: 1rem;
+  color: #4a5568;
+}
+
+/* Detalhe */
+.detalhe-info {
+  background: #f7fafc;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.detalhe-info p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+.detalhe-resultado .nota {
+  background: #fefcbf;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: #975a16;
+  margin-bottom: 1rem;
+}
+
+.tabela-detalhe {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela-detalhe td {
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.tabela-detalhe .valor {
+  text-align: right;
+  font-family: monospace;
+}
+
+.tabela-detalhe .desconto td {
+  color: #c53030;
+}
+
+.tabela-detalhe .total td {
+  font-weight: 600;
+  color: #c53030;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 0.75rem;
+}
+
+.tabela-detalhe .liquido td {
+  font-size: 1.1rem;
+  color: #276749;
+  padding-top: 0.75rem;
+}
+
+.tabela-detalhe .encargos td {
+  color: #718096;
+  font-style: italic;
+}
+
+.tabela-detalhe hr {
+  border: none;
+  border-top: 1px dashed #e2e8f0;
+  margin: 0.5rem 0;
+}
+
+.modal-acoes {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+/* Botões */
+.btn-link {
+  background: none;
+  border: none;
+  color: #3182ce;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+.btn-secundario {
+  background: #e2e8f0;
+  color: #4a5568;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Alertas */
+.alerta {
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.alerta-erro {
+  background: #fed7d7;
+  color: #c53030;
+}
+
+.texto-vazio {
+  text-align: center;
+  color: #718096;
+  padding: 3rem;
+  background: white;
+  border-radius: 8px;
+}

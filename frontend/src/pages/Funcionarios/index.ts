@@ -1,0 +1,1 @@
+export { FuncionariosPage } from './Funcionarios';

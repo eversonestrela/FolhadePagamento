@@ -1,0 +1,217 @@
+/* Dashboard */
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  margin: 0 0 0.5rem 0;
+  color: #1a365d;
+}
+
+.page-header p {
+  margin: 0;
+  color: #718096;
+}
+
+/* Cards de Resumo */
+.cards-resumo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.card-resumo {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.card-icone {
+  font-size: 2rem;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-valor {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a365d;
+}
+
+.card-label {
+  font-size: 0.85rem;
+  color: #718096;
+}
+
+/* Seções */
+.secao {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.secao h2 {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  color: #2d3748;
+}
+
+/* Ações Rápidas */
+.acoes-rapidas {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn-acao {
+  background: #edf2f7;
+  color: #2d3748;
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.btn-acao:hover {
+  background: #e2e8f0;
+}
+
+/* Tabela */
+.tabela-container {
+  overflow-x: auto;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela th,
+.tabela td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.tabela th {
+  font-weight: 600;
+  color: #4a5568;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.tabela td {
+  color: #2d3748;
+}
+
+.tabela tbody tr:hover {
+  background: #f7fafc;
+}
+
+/* Badges de Status */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-pendente {
+  background: #fefcbf;
+  color: #975a16;
+}
+
+.status-processando {
+  background: #bee3f8;
+  color: #2c5282;
+}
+
+.status-sucesso {
+  background: #c6f6d5;
+  color: #276749;
+}
+
+.status-aviso {
+  background: #feebc8;
+  color: #c05621;
+}
+
+.status-erro {
+  background: #fed7d7;
+  color: #c53030;
+}
+
+/* Barra de Progresso */
+.barra-progresso {
+  width: 100px;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+.barra-progresso-preenchido {
+  height: 100%;
+  background: linear-gradient(90deg, #48bb78, #38a169);
+  transition: width 0.3s;
+}
+
+.texto-progresso {
+  font-size: 0.85rem;
+  color: #718096;
+}
+
+.texto-erro {
+  color: #c53030;
+  font-size: 0.85rem;
+}
+
+.texto-vazio {
+  color: #718096;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Links */
+.btn-link {
+  color: #3182ce;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+/* Alertas */
+.alerta {
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.alerta-erro {
+  background: #fed7d7;
+  color: #c53030;
+}

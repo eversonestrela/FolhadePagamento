@@ -1,0 +1,1 @@
+export { ProcessamentosPage } from './Processamentos';
