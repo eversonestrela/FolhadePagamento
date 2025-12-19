@@ -1,0 +1,15 @@
+C:\FolhadePagamento\src\FolhadePagamento.Aplicacao\bin\Debug\net8.0\FolhadePagamento.Aplicacao.deps.json
+C:\FolhadePagamento\src\FolhadePagamento.Aplicacao\bin\Debug\net8.0\FolhadePagamento.Aplicacao.dll
+C:\FolhadePagamento\src\FolhadePagamento.Aplicacao\bin\Debug\net8.0\FolhadePagamento.Aplicacao.pdb
+C:\FolhadePagamento\src\FolhadePagamento.Aplicacao\bin\Debug\net8.0\FolhadePagamento.Dominio.dll
+C:\FolhadePagamento\src\FolhadePagamento.Aplicacao\bin\Debug\net8.0\FolhadePagamento.Dominio.pdb
+C:\FolhadePagamento\src\FolhadePagamento.Aplicacao\obj\Debug\net8.0\FolhadePagamento.Aplicacao.csproj.AssemblyReference.cache
+C:\FolhadePagamento\src\FolhadePagamento.Aplicacao\obj\Debug\net8.0\FolhadePagamento.Aplicacao.GeneratedMSBuildEditorConfig.editorconfig
+C:\FolhadePagamento\src\FolhadePagamento.Aplicacao\obj\Debug\net8.0\FolhadePagamento.Aplicacao.AssemblyInfoInputs.cache
+C:\FolhadePagamento\src\FolhadePagamento.Aplicacao\obj\Debug\net8.0\FolhadePagamento.Aplicacao.AssemblyInfo.cs
+C:\FolhadePagamento\src\FolhadePagamento.Aplicacao\obj\Debug\net8.0\FolhadePagamento.Aplicacao.csproj.CoreCompileInputs.cache
+C:\FolhadePagamento\src\FolhadePagamento.Aplicacao\obj\Debug\net8.0\FolhadeP.9AA1B46F.Up2Date
+C:\FolhadePagamento\src\FolhadePagamento.Aplicacao\obj\Debug\net8.0\FolhadePagamento.Aplicacao.dll
+C:\FolhadePagamento\src\FolhadePagamento.Aplicacao\obj\Debug\net8.0\refint\FolhadePagamento.Aplicacao.dll
+C:\FolhadePagamento\src\FolhadePagamento.Aplicacao\obj\Debug\net8.0\FolhadePagamento.Aplicacao.pdb
+C:\FolhadePagamento\src\FolhadePagamento.Aplicacao\obj\Debug\net8.0\ref\FolhadePagamento.Aplicacao.dll

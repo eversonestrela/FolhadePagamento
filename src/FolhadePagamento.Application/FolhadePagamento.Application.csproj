@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>FolhadePagamento.Application</RootNamespace>
+  </PropertyGroup>
+
+  <!-- 
+    ARCHITECTURAL RULE: Application depends ONLY on Domain.
+    Orchestrates use cases, maps DTOs, validates inputs.
+    
+    PROHIBITED:
+    - Entity Framework
+    - ASP.NET Core
+    - Direct database access
+    - Business logic (must be in Domain)
+  -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\FolhadePagamento.Domain\FolhadePagamento.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
+
+

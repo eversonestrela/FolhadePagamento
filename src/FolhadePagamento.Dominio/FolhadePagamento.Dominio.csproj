@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>FolhadePagamento.Dominio</RootNamespace>
+  </PropertyGroup>
+
+  <!-- 
+    REGRA ARQUITETURAL: Domínio NÃO tem dependências externas.
+    Este projeto deve permanecer puro, agnóstico de framework.
+    
+    PROIBIDO:
+    - Entity Framework
+    - ASP.NET Core
+    - HttpClient
+    - Qualquer pacote externo
+  -->
+
+</Project>

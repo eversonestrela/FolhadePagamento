@@ -1,0 +1,11 @@
+C:\FolhadePagamento\src\FolhadePagamento.Dominio\bin\Debug\net8.0\FolhadePagamento.Dominio.deps.json
+C:\FolhadePagamento\src\FolhadePagamento.Dominio\bin\Debug\net8.0\FolhadePagamento.Dominio.dll
+C:\FolhadePagamento\src\FolhadePagamento.Dominio\bin\Debug\net8.0\FolhadePagamento.Dominio.pdb
+C:\FolhadePagamento\src\FolhadePagamento.Dominio\obj\Debug\net8.0\FolhadePagamento.Dominio.GeneratedMSBuildEditorConfig.editorconfig
+C:\FolhadePagamento\src\FolhadePagamento.Dominio\obj\Debug\net8.0\FolhadePagamento.Dominio.AssemblyInfoInputs.cache
+C:\FolhadePagamento\src\FolhadePagamento.Dominio\obj\Debug\net8.0\FolhadePagamento.Dominio.AssemblyInfo.cs
+C:\FolhadePagamento\src\FolhadePagamento.Dominio\obj\Debug\net8.0\FolhadePagamento.Dominio.csproj.CoreCompileInputs.cache
+C:\FolhadePagamento\src\FolhadePagamento.Dominio\obj\Debug\net8.0\FolhadePagamento.Dominio.dll
+C:\FolhadePagamento\src\FolhadePagamento.Dominio\obj\Debug\net8.0\refint\FolhadePagamento.Dominio.dll
+C:\FolhadePagamento\src\FolhadePagamento.Dominio\obj\Debug\net8.0\FolhadePagamento.Dominio.pdb
+C:\FolhadePagamento\src\FolhadePagamento.Dominio\obj\Debug\net8.0\ref\FolhadePagamento.Dominio.dll
