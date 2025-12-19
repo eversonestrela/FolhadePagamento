@@ -105,3 +105,4 @@ C:\FolhadePagamento\testes\FolhadePagamento.Testes\obj\Debug\net8.0\refint\Folha
 C:\FolhadePagamento\testes\FolhadePagamento.Testes\obj\Debug\net8.0\FolhadePagamento.Testes.pdb
 C:\FolhadePagamento\testes\FolhadePagamento.Testes\obj\Debug\net8.0\FolhadePagamento.Testes.genruntimeconfig.cache
 C:\FolhadePagamento\testes\FolhadePagamento.Testes\obj\Debug\net8.0\ref\FolhadePagamento.Testes.dll
+C:\FolhadePagamento\testes\FolhadePagamento.Testes\obj\Debug\net8.0\FolhadePagamento.Testes.sourcelink.json

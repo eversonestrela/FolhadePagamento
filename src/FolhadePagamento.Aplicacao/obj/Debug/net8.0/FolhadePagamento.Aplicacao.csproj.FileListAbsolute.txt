@@ -13,3 +13,4 @@ C:\FolhadePagamento\src\FolhadePagamento.Aplicacao\obj\Debug\net8.0\FolhadePagam
 C:\FolhadePagamento\src\FolhadePagamento.Aplicacao\obj\Debug\net8.0\refint\FolhadePagamento.Aplicacao.dll
 C:\FolhadePagamento\src\FolhadePagamento.Aplicacao\obj\Debug\net8.0\FolhadePagamento.Aplicacao.pdb
 C:\FolhadePagamento\src\FolhadePagamento.Aplicacao\obj\Debug\net8.0\ref\FolhadePagamento.Aplicacao.dll
+C:\FolhadePagamento\src\FolhadePagamento.Aplicacao\obj\Debug\net8.0\FolhadePagamento.Aplicacao.sourcelink.json

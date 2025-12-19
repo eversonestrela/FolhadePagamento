@@ -141,11 +141,16 @@ public sealed class TabelaIrrf
         var deducaoDependentes = DeducaoPorDependente.Multiplicar(numeroDependentes);
 
         // Base de cálculo ajustada = Base - Dedução por dependentes
-        var baseAjustada = baseCalculo.Subtrair(deducaoDependentes);
-
-        // Se base ajustada for negativa, considera zero
-        if (baseAjustada.Valor < 0)
+        Dinheiro baseAjustada;
+        if (deducaoDependentes.Valor >= baseCalculo.Valor)
+        {
+            // Se dedução for maior que a base, considera zero
             baseAjustada = Dinheiro.Zero;
+        }
+        else
+        {
+            baseAjustada = baseCalculo.Subtrair(deducaoDependentes);
+        }
 
         // Encontrar a faixa correspondente
         var faixaAplicavel = EncontrarFaixa(baseAjustada);
@@ -156,6 +161,7 @@ public sealed class TabelaIrrf
         return new ResultadoCalculoIrrf(
             baseOriginal: baseCalculo,
             numeroDependentes: numeroDependentes,
+            valorUnitarioPorDependente: DeducaoPorDependente,
             deducaoPorDependentes: deducaoDependentes,
             baseAjustada: baseAjustada,
             faixaAplicada: faixaAplicavel,
@@ -211,6 +217,14 @@ public sealed class TabelaIrrf
 /// <summary>
 /// Resultado do cálculo de IRRF com detalhamento completo.
 /// Imutável - serve como memória de cálculo.
+/// 
+/// MEMÓRIA DE CÁLCULO:
+/// Esta classe registra todos os passos do cálculo do IRRF,
+/// permitindo auditoria e rastreabilidade completa.
+/// 
+/// Fórmula: IRRF = (BaseAjustada × Alíquota%) - ParcelaADeduzir
+/// Onde: BaseAjustada = BaseOriginal - DeducaoPorDependentes
+/// E: DeducaoPorDependentes = ValorUnitarioPorDependente × NumeroDependentes
 /// </summary>
 public sealed class ResultadoCalculoIrrf
 {
@@ -225,12 +239,20 @@ public sealed class ResultadoCalculoIrrf
     public int NumeroDependentes { get; }
 
     /// <summary>
+    /// Valor unitário da dedução por cada dependente.
+    /// Este valor vem da tabela vigente.
+    /// </summary>
+    public Dinheiro ValorUnitarioPorDependente { get; }
+
+    /// <summary>
     /// Valor total deduzido por dependentes.
+    /// Fórmula: ValorUnitarioPorDependente × NumeroDependentes
     /// </summary>
     public Dinheiro DeducaoPorDependentes { get; }
 
     /// <summary>
     /// Base de cálculo ajustada (após dedução de dependentes).
+    /// Fórmula: BaseOriginal - DeducaoPorDependentes
     /// </summary>
     public Dinheiro BaseAjustada { get; }
 
@@ -251,6 +273,7 @@ public sealed class ResultadoCalculoIrrf
 
     /// <summary>
     /// Valor final do IRRF calculado.
+    /// Fórmula: (BaseAjustada × AlíquotaEfetiva%) - ParcelaADeduzir
     /// </summary>
     public Dinheiro ValorIrrf { get; }
 
@@ -267,6 +290,7 @@ public sealed class ResultadoCalculoIrrf
     public ResultadoCalculoIrrf(
         Dinheiro baseOriginal,
         int numeroDependentes,
+        Dinheiro valorUnitarioPorDependente,
         Dinheiro deducaoPorDependentes,
         Dinheiro baseAjustada,
         FaixaIrrf faixaAplicada,
@@ -277,6 +301,7 @@ public sealed class ResultadoCalculoIrrf
     {
         BaseOriginal = baseOriginal;
         NumeroDependentes = numeroDependentes;
+        ValorUnitarioPorDependente = valorUnitarioPorDependente;
         DeducaoPorDependentes = deducaoPorDependentes;
         BaseAjustada = baseAjustada;
         FaixaAplicada = faixaAplicada;
@@ -288,8 +313,13 @@ public sealed class ResultadoCalculoIrrf
 
     public override string ToString()
     {
+        var dependentesInfo = NumeroDependentes > 0 
+            ? $", Dependentes: {NumeroDependentes} × {ValorUnitarioPorDependente} = {DeducaoPorDependentes}"
+            : "";
+        
         if (EhIsento)
-            return $"IRRF: Isento (Base: {BaseAjustada}, Tabela: {TabelaUtilizada})";
-        return $"IRRF: {ValorIrrf} ({AliquotaEfetiva}% - {ParcelaADeduzir}) Base: {BaseAjustada}, Tabela: {TabelaUtilizada}";
+            return $"IRRF: Isento (Base: {BaseAjustada}{dependentesInfo}, Tabela: {TabelaUtilizada})";
+        
+        return $"IRRF: {ValorIrrf} ({AliquotaEfetiva}% - {ParcelaADeduzir}) Base: {BaseAjustada}{dependentesInfo}, Tabela: {TabelaUtilizada}";
     }
 }
