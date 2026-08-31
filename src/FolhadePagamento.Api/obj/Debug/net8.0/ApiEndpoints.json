@@ -36,6 +36,7 @@
   },
   {
     "ContainingType": "FolhadePagamento.Api.Controllers.V1.AutenticacaoController",
+<<<<<<< HEAD
     "Method": "ListarPapeis",
     "RelativePath": "api/v1/Autenticacao/papeis",
     "HttpMethod": "GET",
@@ -52,6 +53,8 @@
   },
   {
     "ContainingType": "FolhadePagamento.Api.Controllers.V1.AutenticacaoController",
+=======
+>>>>>>> 1ab04c7e7ce48eb6f487d2d9bbada75fda034aa8
     "Method": "Verificar",
     "RelativePath": "api/v1/Autenticacao/verificar",
     "HttpMethod": "GET",
@@ -273,6 +276,7 @@
     ]
   },
   {
+<<<<<<< HEAD
     "ContainingType": "FolhadePagamento.Api.Controllers.V1.LotesController",
     "Method": "CriarLote",
     "RelativePath": "api/v1/Lotes",
@@ -513,6 +517,8 @@
     ]
   },
   {
+=======
+>>>>>>> 1ab04c7e7ce48eb6f487d2d9bbada75fda034aa8
     "ContainingType": "FolhadePagamento.Api.Controllers.V1.ProcessamentosController",
     "Method": "Processar",
     "RelativePath": "api/v1/Processamentos",

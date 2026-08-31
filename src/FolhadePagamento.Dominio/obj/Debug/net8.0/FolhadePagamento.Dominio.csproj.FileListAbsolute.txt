@@ -10,3 +10,15 @@ C:\FolhadePagamento\src\FolhadePagamento.Dominio\obj\Debug\net8.0\refint\Folhade
 C:\FolhadePagamento\src\FolhadePagamento.Dominio\obj\Debug\net8.0\FolhadePagamento.Dominio.pdb
 C:\FolhadePagamento\src\FolhadePagamento.Dominio\obj\Debug\net8.0\ref\FolhadePagamento.Dominio.dll
 C:\FolhadePagamento\src\FolhadePagamento.Dominio\obj\Debug\net8.0\FolhadePagamento.Dominio.sourcelink.json
+D:\AgendaGITNew\FolhadePagamento\src\FolhadePagamento.Dominio\bin\Debug\net8.0\FolhadePagamento.Dominio.deps.json
+D:\AgendaGITNew\FolhadePagamento\src\FolhadePagamento.Dominio\bin\Debug\net8.0\FolhadePagamento.Dominio.dll
+D:\AgendaGITNew\FolhadePagamento\src\FolhadePagamento.Dominio\bin\Debug\net8.0\FolhadePagamento.Dominio.pdb
+D:\AgendaGITNew\FolhadePagamento\src\FolhadePagamento.Dominio\obj\Debug\net8.0\FolhadePagamento.Dominio.GeneratedMSBuildEditorConfig.editorconfig
+D:\AgendaGITNew\FolhadePagamento\src\FolhadePagamento.Dominio\obj\Debug\net8.0\FolhadePagamento.Dominio.AssemblyInfoInputs.cache
+D:\AgendaGITNew\FolhadePagamento\src\FolhadePagamento.Dominio\obj\Debug\net8.0\FolhadePagamento.Dominio.AssemblyInfo.cs
+D:\AgendaGITNew\FolhadePagamento\src\FolhadePagamento.Dominio\obj\Debug\net8.0\FolhadePagamento.Dominio.csproj.CoreCompileInputs.cache
+D:\AgendaGITNew\FolhadePagamento\src\FolhadePagamento.Dominio\obj\Debug\net8.0\FolhadePagamento.Dominio.sourcelink.json
+D:\AgendaGITNew\FolhadePagamento\src\FolhadePagamento.Dominio\obj\Debug\net8.0\FolhadePagamento.Dominio.dll
+D:\AgendaGITNew\FolhadePagamento\src\FolhadePagamento.Dominio\obj\Debug\net8.0\refint\FolhadePagamento.Dominio.dll
+D:\AgendaGITNew\FolhadePagamento\src\FolhadePagamento.Dominio\obj\Debug\net8.0\FolhadePagamento.Dominio.pdb
+D:\AgendaGITNew\FolhadePagamento\src\FolhadePagamento.Dominio\obj\Debug\net8.0\ref\FolhadePagamento.Dominio.dll
