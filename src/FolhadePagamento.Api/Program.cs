@@ -1,4 +1,6 @@
+using FolhadePagamento.Api.Autorizacao;
 using FolhadePagamento.Api.Extensoes;
+using FolhadePagamento.Api.Middlewares;
 using FolhadePagamento.Infra;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +20,9 @@ builder.Services.AdicionarInfraestrutura(
 // Autenticação JWT
 builder.Services.AdicionarAutenticacaoJwt(builder.Configuration);
 
+// Autorização RBAC (Papéis e Policies)
+builder.Services.AdicionarAutorizacaoRbac();
+
 // Versionamento de API
 builder.Services.AdicionarVersionamento();
 
@@ -36,6 +41,9 @@ var app = builder.Build();
 // ============================================================================
 // CONFIGURAÇÃO DO PIPELINE
 // ============================================================================
+
+// Middleware de Auditoria (deve vir cedo no pipeline)
+app.UseAuditoria();
 
 // Swagger (apenas em desenvolvimento)
 if (app.Environment.IsDevelopment())

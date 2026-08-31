@@ -1,6 +1,7 @@
 using Asp.Versioning;
 using FolhadePagamento.Api.DTOs;
 using FolhadePagamento.Api.Servicos;
+using FolhadePagamento.Aplicacao.Autorizacao;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,11 @@ namespace FolhadePagamento.Api.Controllers.V1;
 
 /// <summary>
 /// Controller para autenticação.
+/// 
+/// PAPÉIS DISPONÍVEIS (RBAC):
+/// - Administrador: Acesso total
+/// - Operador: Processar folha e consultar
+/// - Consulta: Apenas leitura
 /// </summary>
 [ApiController]
 [ApiVersion("1.0")]
@@ -28,8 +34,18 @@ public class AutenticacaoController : ControllerBase
     /// </summary>
     /// <remarks>
     /// Credenciais de exemplo para desenvolvimento:
+    /// 
+    /// **Administrador:**
     /// - Usuario: admin
     /// - Senha: admin123
+    /// 
+    /// **Operador:**
+    /// - Usuario: operador
+    /// - Senha: operador123
+    /// 
+    /// **Consulta:**
+    /// - Usuario: consulta
+    /// - Senha: consulta123
     /// </remarks>
     [HttpPost("login")]
     [AllowAnonymous]
@@ -38,11 +54,11 @@ public class AutenticacaoController : ControllerBase
     public ActionResult<LoginResponse> Login([FromBody] LoginRequest request)
     {
         // NOTA: Em produção, validar contra banco de dados ou Identity Provider
-        // Este é apenas um exemplo simplificado para demonstração
-        var usuarioValido = _configuration.GetValue<string>("UsuarioDemo:Usuario") ?? "admin";
-        var senhaValida = _configuration.GetValue<string>("UsuarioDemo:Senha") ?? "admin123";
+        // Este é um exemplo simplificado para demonstração com múltiplos papéis
 
-        if (request.Usuario != usuarioValido || request.Senha != senhaValida)
+        var (usuarioValido, papel) = ValidarCredenciais(request.Usuario, request.Senha);
+
+        if (!usuarioValido)
         {
             return Unauthorized(new ErroResponse
             {
@@ -54,7 +70,7 @@ public class AutenticacaoController : ControllerBase
         var token = _jwtService.GerarToken(
             usuarioId: Guid.NewGuid().ToString(),
             nome: request.Usuario,
-            roles: new[] { "Usuario", "Admin" }
+            roles: new[] { papel! }
         );
 
         var expiracaoMinutos = _configuration.GetValue<int>("Jwt:ExpiracaoMinutos", 60);
@@ -63,12 +79,13 @@ public class AutenticacaoController : ControllerBase
         {
             Token = token,
             ExpiraEm = DateTime.UtcNow.AddMinutes(expiracaoMinutos),
-            TipoToken = "Bearer"
+            TipoToken = "Bearer",
+            Papel = papel
         });
     }
 
     /// <summary>
-    /// Verifica se o token atual é válido.
+    /// Verifica se o token atual é válido e retorna informações do usuário.
     /// </summary>
     [HttpGet("verificar")]
     [Authorize]
@@ -78,13 +95,72 @@ public class AutenticacaoController : ControllerBase
     {
         var usuarioId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
         var nome = User.Identity?.Name;
+        var papeis = User.FindAll(System.Security.Claims.ClaimTypes.Role)
+            .Select(c => c.Value)
+            .ToList();
 
         return Ok(new
         {
             Valido = true,
             UsuarioId = usuarioId,
             Nome = nome,
+            Papeis = papeis,
             VerificadoEm = DateTime.UtcNow
         });
+    }
+
+    /// <summary>
+    /// Lista os papéis e permissões disponíveis no sistema.
+    /// </summary>
+    [HttpGet("papeis")]
+    [AllowAnonymous]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public ActionResult ListarPapeis()
+    {
+        var resultado = Papeis.TodosOsPapeis.Select(papel => new
+        {
+            Papel = papel,
+            Permissoes = MapeamentoPapelPermissao.ObterPermissoes(papel)
+        });
+
+        return Ok(resultado);
+    }
+
+    /// <summary>
+    /// Valida credenciais e retorna o papel do usuário.
+    /// Em produção, isso seria feito contra um banco de dados.
+    /// </summary>
+    private (bool Valido, string? Papel) ValidarCredenciais(string usuario, string senha)
+    {
+        // Credenciais de demonstração
+        var credenciaisDemo = new Dictionary<string, (string Senha, string Papel)>
+        {
+            ["admin"] = ("admin123", Papeis.Administrador),
+            ["operador"] = ("operador123", Papeis.Operador),
+            ["consulta"] = ("consulta123", Papeis.Consulta)
+        };
+
+        // Também aceita credenciais configuradas no appsettings
+        var usuarioConfig = _configuration.GetValue<string>("UsuarioDemo:Usuario");
+        var senhaConfig = _configuration.GetValue<string>("UsuarioDemo:Senha");
+
+        if (!string.IsNullOrEmpty(usuarioConfig) && !string.IsNullOrEmpty(senhaConfig))
+        {
+            if (usuario == usuarioConfig && senha == senhaConfig)
+            {
+                return (true, Papeis.Administrador);
+            }
+        }
+
+        // Verificar credenciais de demonstração
+        if (credenciaisDemo.TryGetValue(usuario.ToLowerInvariant(), out var credencial))
+        {
+            if (senha == credencial.Senha)
+            {
+                return (true, credencial.Papel);
+            }
+        }
+
+        return (false, null);
     }
 }

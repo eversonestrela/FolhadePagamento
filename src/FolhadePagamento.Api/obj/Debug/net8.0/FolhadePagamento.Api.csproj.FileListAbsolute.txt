@@ -83,3 +83,4 @@ C:\FolhadePagamento\src\FolhadePagamento.Api\obj\Debug\net8.0\refint\FolhadePaga
 C:\FolhadePagamento\src\FolhadePagamento.Api\obj\Debug\net8.0\FolhadePagamento.Api.pdb
 C:\FolhadePagamento\src\FolhadePagamento.Api\obj\Debug\net8.0\FolhadePagamento.Api.genruntimeconfig.cache
 C:\FolhadePagamento\src\FolhadePagamento.Api\obj\Debug\net8.0\ref\FolhadePagamento.Api.dll
+C:\FolhadePagamento\src\FolhadePagamento.Api\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

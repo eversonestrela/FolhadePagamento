@@ -1,3 +1,4 @@
+using FolhadePagamento.Aplicacao.Lotes;
 using FolhadePagamento.Aplicacao.Portas;
 using FolhadePagamento.Infra.Persistencia;
 using FolhadePagamento.Infra.Persistencia.Repositorios;
@@ -41,6 +42,7 @@ public static class InfraExtensoes
         services.AddScoped<IProcessamentoRepositorio, ProcessamentoRepositorio>();
         services.AddScoped<IFuncionarioRepositorio, FuncionarioRepositorio>();
         services.AddScoped<IUnidadeDeTrabalho, UnidadeDeTrabalho>();
+        services.AddScoped<ILoteRepositorio, LoteRepositorio>();
 
         return services;
     }
@@ -60,6 +62,7 @@ public static class InfraExtensoes
         services.AddScoped<IProcessamentoRepositorio, ProcessamentoRepositorio>();
         services.AddScoped<IFuncionarioRepositorio, FuncionarioRepositorio>();
         services.AddScoped<IUnidadeDeTrabalho, UnidadeDeTrabalho>();
+        services.AddScoped<ILoteRepositorio, LoteRepositorio>();
 
         return services;
     }

@@ -73,6 +73,11 @@ public record LoginResponse
     public required string Token { get; init; }
     public required DateTime ExpiraEm { get; init; }
     public required string TipoToken { get; init; } = "Bearer";
+    
+    /// <summary>
+    /// Papel atribuído ao usuário (Administrador, Operador, Consulta).
+    /// </summary>
+    public string? Papel { get; init; }
 }
 
 /// <summary>
@@ -106,4 +111,60 @@ public record FuncionarioCriadoResponse
     public required Guid FuncionarioId { get; init; }
     public required string Nome { get; init; }
     public required DateTime CriadoEm { get; init; }
+}
+
+// ============================================================================
+// DTOs DE LOTES
+// ============================================================================
+
+/// <summary>
+/// Request para criar lote de processamento.
+/// </summary>
+public record CriarLoteRequest
+{
+    public required int CompetenciaAno { get; init; }
+    public required int CompetenciaMes { get; init; }
+    
+    /// <summary>
+    /// IDs específicos de funcionários. Se vazio, processa todos os ativos.
+    /// </summary>
+    public List<Guid>? FuncionarioIds { get; init; }
+    
+    /// <summary>
+    /// Observação opcional sobre o lote.
+    /// </summary>
+    public string? Observacao { get; init; }
+}
+
+/// <summary>
+/// Response de lote criado.
+/// </summary>
+public record LoteCriadoResponse
+{
+    public required Guid LoteId { get; init; }
+    public required int CompetenciaAno { get; init; }
+    public required int CompetenciaMes { get; init; }
+    public required int TotalItens { get; init; }
+    public required string Status { get; init; }
+    public required DateTime CriadoEm { get; init; }
+    public required string Mensagem { get; init; }
+}
+
+/// <summary>
+/// Response de progresso do lote.
+/// </summary>
+public record ProgressoLoteResponse
+{
+    public required Guid LoteId { get; init; }
+    public required string Status { get; init; }
+    public required int TotalItens { get; init; }
+    public required int Pendentes { get; init; }
+    public required int EmProcessamento { get; init; }
+    public required int Concluidos { get; init; }
+    public required int ComFalha { get; init; }
+    public required int Ignorados { get; init; }
+    public required decimal PercentualConcluido { get; init; }
+    public DateTime? IniciadoEm { get; init; }
+    public DateTime? ConcluidoEm { get; init; }
+    public TimeSpan? DuracaoTotal { get; init; }
 }

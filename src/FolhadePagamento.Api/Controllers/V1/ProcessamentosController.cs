@@ -1,4 +1,5 @@
 using Asp.Versioning;
+using FolhadePagamento.Api.Autorizacao;
 using FolhadePagamento.Api.DTOs;
 using FolhadePagamento.Aplicacao.Portas;
 using Microsoft.AspNetCore.Authorization;
@@ -14,6 +15,10 @@ namespace FolhadePagamento.Api.Controllers.V1;
 /// - Controller NÃO usa DbContext diretamente
 /// - Controller chama Casos de Uso e repositórios da Application
 /// - Valores vêm do Core já calculados
+/// 
+/// AUTORIZAÇÃO (RBAC):
+/// - GET: Administrador, Operador, Consulta
+/// - POST (Processar): Administrador, Operador
 /// </summary>
 [ApiController]
 [ApiVersion("1.0")]
@@ -39,6 +44,7 @@ public class ProcessamentosController : ControllerBase
     /// Obtém um processamento por ID.
     /// </summary>
     [HttpGet("{processamentoVersaoId:guid}")]
+    [Authorize(Policy = Policies.ProcessamentoConsultar)]
     [ProducesResponseType(typeof(ProcessamentoConsulta), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErroResponse), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<ProcessamentoConsulta>> ObterPorId(
@@ -63,6 +69,7 @@ public class ProcessamentosController : ControllerBase
     /// Obtém a versão atual do processamento para um funcionário e competência.
     /// </summary>
     [HttpGet("funcionario/{funcionarioId:guid}/competencia/{ano:int}/{mes:int}")]
+    [Authorize(Policy = Policies.ProcessamentoConsultar)]
     [ProducesResponseType(typeof(ProcessamentoConsulta), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErroResponse), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<ProcessamentoConsulta>> ObterVersaoAtual(
@@ -90,6 +97,7 @@ public class ProcessamentosController : ControllerBase
     /// Obtém o histórico de versões para um funcionário e competência.
     /// </summary>
     [HttpGet("funcionario/{funcionarioId:guid}/competencia/{ano:int}/{mes:int}/historico")]
+    [Authorize(Policy = Policies.ProcessamentoConsultar)]
     [ProducesResponseType(typeof(IEnumerable<ProcessamentoResumoConsulta>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<ProcessamentoResumoConsulta>>> ObterHistorico(
         Guid funcionarioId,
@@ -107,6 +115,7 @@ public class ProcessamentosController : ControllerBase
     /// Lista processamentos de uma competência.
     /// </summary>
     [HttpGet("competencia/{ano:int}/{mes:int}")]
+    [Authorize(Policy = Policies.ProcessamentoConsultar)]
     [ProducesResponseType(typeof(IEnumerable<ProcessamentoResumoConsulta>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<ProcessamentoResumoConsulta>>> ListarPorCompetencia(
         int ano,
@@ -127,6 +136,7 @@ public class ProcessamentosController : ControllerBase
     /// Em produção, o cálculo deve ser delegado ao Core (Caso de Uso).
     /// </summary>
     [HttpPost]
+    [Authorize(Policy = Policies.ProcessamentoExecutar)]
     [ProducesResponseType(typeof(ProcessamentoCriadoResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ErroResponse), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ErroResponse), StatusCodes.Status404NotFound)]
@@ -301,6 +311,7 @@ public class ProcessamentosController : ControllerBase
     /// Verifica se existe processamento para funcionário e competência.
     /// </summary>
     [HttpHead("funcionario/{funcionarioId:guid}/competencia/{ano:int}/{mes:int}")]
+    [Authorize(Policy = Policies.ProcessamentoConsultar)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> VerificarExistencia(

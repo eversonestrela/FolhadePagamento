@@ -1,4 +1,5 @@
 using Asp.Versioning;
+using FolhadePagamento.Api.Autorizacao;
 using FolhadePagamento.Api.DTOs;
 using FolhadePagamento.Aplicacao.Portas;
 using Microsoft.AspNetCore.Authorization;
@@ -13,6 +14,10 @@ namespace FolhadePagamento.Api.Controllers.V1;
 /// - Controller NÃO calcula
 /// - Controller NÃO usa DbContext diretamente
 /// - Controller chama repositórios da Application
+/// 
+/// AUTORIZAÇÃO (RBAC):
+/// - GET: Administrador, Operador, Consulta
+/// - POST/PUT/DELETE: Apenas Administrador
 /// </summary>
 [ApiController]
 [ApiVersion("1.0")]
@@ -31,6 +36,7 @@ public class FuncionariosController : ControllerBase
     /// Lista todos os funcionários ativos.
     /// </summary>
     [HttpGet]
+    [Authorize(Policy = Policies.FuncionarioConsultar)]
     [ProducesResponseType(typeof(IEnumerable<FuncionarioConsulta>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<FuncionarioConsulta>>> Listar(
         CancellationToken cancellationToken)
@@ -43,6 +49,7 @@ public class FuncionariosController : ControllerBase
     /// Obtém um funcionário pelo ID.
     /// </summary>
     [HttpGet("{funcionarioId:guid}")]
+    [Authorize(Policy = Policies.FuncionarioConsultar)]
     [ProducesResponseType(typeof(FuncionarioConsulta), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErroResponse), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<FuncionarioConsulta>> ObterPorId(
@@ -67,6 +74,7 @@ public class FuncionariosController : ControllerBase
     /// Cria um novo funcionário.
     /// </summary>
     [HttpPost]
+    [Authorize(Policy = Policies.FuncionarioCriar)]
     [ProducesResponseType(typeof(FuncionarioCriadoResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ErroResponse), StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<FuncionarioCriadoResponse>> Criar(
@@ -123,6 +131,7 @@ public class FuncionariosController : ControllerBase
     /// Atualiza um funcionário existente.
     /// </summary>
     [HttpPut("{funcionarioId:guid}")]
+    [Authorize(Policy = Policies.FuncionarioAtualizar)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ErroResponse), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ErroResponse), StatusCodes.Status400BadRequest)]
@@ -168,6 +177,7 @@ public class FuncionariosController : ControllerBase
     /// Desativa um funcionário (soft delete).
     /// </summary>
     [HttpDelete("{funcionarioId:guid}")]
+    [Authorize(Policy = Policies.FuncionarioDesativar)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ErroResponse), StatusCodes.Status404NotFound)]
     public async Task<ActionResult> Desativar(
@@ -194,6 +204,7 @@ public class FuncionariosController : ControllerBase
     /// Verifica se um funcionário existe e está ativo.
     /// </summary>
     [HttpHead("{funcionarioId:guid}")]
+    [Authorize(Policy = Policies.FuncionarioConsultar)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> Verificar(

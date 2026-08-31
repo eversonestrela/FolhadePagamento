@@ -30,6 +30,10 @@ public class FolhaDbContext : DbContext
     public DbSet<DetalheIrrfDb> DetalhesIrrf => Set<DetalheIrrfDb>();
     public DbSet<DetalheFgtsDb> DetalhesFgts => Set<DetalheFgtsDb>();
     public DbSet<DetalheConsignadosDb> DetalhesConsignados => Set<DetalheConsignadosDb>();
+    
+    // Lotes
+    public DbSet<LoteProcessamentoDb> LotesProcessamento => Set<LoteProcessamentoDb>();
+    public DbSet<ItemLoteDb> ItensLote => Set<ItemLoteDb>();
 
     // ========================================================================
     // CONFIGURAÇÃO DO MODELO
